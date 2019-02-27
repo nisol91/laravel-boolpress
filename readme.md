@@ -145,21 +145,20 @@ per passare lo **slug** lo metto nel secondo argomento della route!!
 
 -----
 
-
+**importante** se io utilizzo la dependence injection, es: (Post $post), allora nell url della mia rotta dovro mettere per esempio /show/{post}. Deve coincidere il nome "post" per poterlo passare dall url al controller.
 
 -----
 
 # DA FINIRE:
 
-1 - /post/{post_slug}: La pagina che fa vedere il contenuto del post identificato da post_slug
 
 *facoltative:*
 
-2 - non riconosce le categories nell admin edit post
+1 - non riconosce le categories nell admin edit post
 
-3 - aggiusta select nel filter home categories
+2 - aggiusta select nel filter home categories
 
-4 - text area per html
+3 - text area per html
 
 
 

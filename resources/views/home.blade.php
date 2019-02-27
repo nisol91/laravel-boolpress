@@ -27,12 +27,10 @@
             @forelse ($posts as $post)
                 <tr>
                     <th>{{$post->id}}</th>
-                    <th>{{$post->title}}</th>
+                    <th><a href="{{ route('posts.show', $post->id) }}">{{$post->title}}</a></th>
                     <th>{{$post->author}}</th>
                     <th>{{str_limit($post->content, 100, ' (...)')}}</th>
                     <th>{{$post->category->title}}</th>
-                    {{-- <th><a href="{{ route('posts.show', $post->slug) }}" class="btn btn-primary">Mostra post per categoria</a></th> --}}
-
                 </tr>
             @empty
                 <h1>Non ci sono post da visualizzare</h1>
