@@ -56,7 +56,7 @@ Modifico admin_app per comodita' visto che e gia mezza fatta di default.
 
 -----
 
-Per quanto riguarda le rotte, posso creare un group admin, con *middleware* auth e *prefix* admin (mi aggiunge automaticamente */admin* a tutti gli url), *namespace* Admin (analogamente a prefix, aggiunge al namespace Admin\ ) e *name* admin, analogo agli altri due ma per il nome della route.
+Per quanto riguarda le rotte, posso creare un group admin, con *middleware* auth e *prefix* admin (mi aggiunge automaticamente */admin* a tutti gli url), *namespace* Admin (analogamente a prefix, aggiunge al namespace Admin\ ) e *name* admin., analogo agli altri due ma per il nome della route(in questo caso col punto alla fine).
 
 -----
 
@@ -80,9 +80,60 @@ Posso aiutarmi con gli **Helper** di Laravel, metodi utili, che per esempio limi
 
 Anche qui genero il model e il controller:
 
-`php artisan make:model Category`
+`php artisan make:model Category` (ricordare **fillable**)
 
 `php artisan make:controller -r Admin/CategoryController`
 
 Per evitare di fare la CRUD sulle categories, popolo la tabella con i soliti seeder.
+
+**Ricorda sempre di importare il model dove serve.** `App\NOMEMODEL`(lo stesso vale per tutte le altre classi, ove servano).
+
+-----
+
+Ora c e' una parte molto importante che riguarda le **relazioni**. Per collegare due tabelle tramite *foreign key*.
+
+Innanzitutto utilizzo *update* per la tabella posts:
+
+`php artisan make:migration update_posts_table --table=posts`
+Questa migration mi permette di **aggiungere una relazione fra tabelle**.
+
+Nella migration andro a copiare cio che c e nella documentazione.  
+
+La sintassi della foreign key sta per:
+
+*category_id(colonna tabella post) e' l id della tabella categories (id e colonna tabella da joinare con tabella post, ovvero tabella categories)*
+
+A questo punto posso agiungere ai seeder e al fillable del post anche *category_id*
+
+Faccio girare i seeder e rigenero la tabella dei post: `php artisan db:seed --class=PostTableSeeder`
+
+
+A questo punto devo agire sui **model** delle due tabelle Category e Post per dire a laravel le effettive relazioni. Inizio chiedendomi: 'chi e che ha tanti fra i due?'
+In questo caso una categoria puo avere tanti post. iniziamo quindi dal modello Category.
+
+ ```language
+ public function nomealtroelementorelazione() {
+
+        return $this->relazione('App\altromodello');
+    }
+ ```
+
+ `$post->category->title`. Category e' un vero e proprio array con title e id(sono le colonne della tabella Categories)
+
+-----
+
+Nella CRUD dei post, nel create devo fare la query per prendere tutte le categorie tramite il model, e poi col compact le passo alla view e da li con un foreach le rendo disponibili alla select. Cosi e' dinamico.
+
+-----
+
+**quesy sql**
+
+    `$category = Category::where('slug', $slug)->first();`
+
+    cerca nel model Controller (che ho debitamente importato con use) tutti gli elementi in cui 'slug' e' uguale allo $slug che gli ho dato in ingresso nella mia funzione.
+
+    Questa invece e' la query che si usa solo per l id.
+   `Category::find($id)`
+
+
 
