@@ -10666,3 +10666,16 @@ a.text-dark:focus {
   box-sizing: border-box;
 }
 
+li {
+  margin: 0 10px;
+}
+
+a {
+  color: grey;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
