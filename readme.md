@@ -24,7 +24,7 @@ Creo la tabella post nel DB
 
 `php artisan migrate`
 
-Di conseguenza creo model e risorsa:
+Di conseguenza creo model e risorsa(PostController):
 
 `php artisan make:model Post`
 
@@ -43,4 +43,11 @@ In seguito riempio la tabella post con i miei seeder:
 
 -----
 
-Ricordarsi di rinominare la app admin_app, poiche relativa a tutto quello che e il backoffice.
+Ricordarsi di copiare app e rinominarla admin_app. Sara' la app relativa a tutto quello che e il backoffice.
+
+Posso quindi modificare admin_app, aggiungendo tutti i comandi per le azioni sui Posts.
+Modifico admin_app per comodita' visto che e gia mezza fatta di default.
+
+-----
+
+Per quanto riguarda le rotte, posso creare un group admin, con *middleware* auth e *prefix* admin (mi aggiunge automaticamente */admin* a tutti gli url) e *namespace* Admin (analogamente a prefix, aggiunge al namespace Admin\ ) e *name* admin, analogo agli altri due ma per il nome della route.

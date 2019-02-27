@@ -15,9 +15,22 @@
 
 Auth::routes();
 
-Route::get('/admin', 'Admin\HomeController@index')->name('admin.home')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
+
+
+// Route::get('/admin', 'Admin\HomeController@index')->name('admin.home')->middleware('auth');
+// Route::get('/admin/posts', 'Admin\PostController@index')->name('admin.post.index');
+
+//Questi due li metto nel GRUPPO qua sotto, molto piu comodo.
+
+//questo e il gruppo ADMIN
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('/posts', 'PostController');
+});
+
+
 
 
 
