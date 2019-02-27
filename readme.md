@@ -126,7 +126,7 @@ Nella CRUD dei post, nel create devo fare la query per prendere tutte le categor
 
 -----
 
-**quesy sql**
+**query sql**
 
     `$category = Category::where('slug', $slug)->first();`
 
