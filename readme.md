@@ -1,6 +1,8 @@
 # LARAVEL-BOOLPRESS
 
-Blog avanzato con laravel.
+*Blog avanzato con laravel.*
+
+-----
 
 Innanzitutto creare lo scaffolding di autenticazione con `php artisan make:auth`.
 
@@ -16,7 +18,12 @@ Il middleware e' un metodo del costruttore del controller che mi controlla se so
 
 -----
 
-Creo la tabella post nel DB `php artisan make:migration create_posts_table`.
+Creo la tabella post nel DB 
+
+`php artisan make:migration create_posts_table`
+
+`php artisan migrate`
+
 Di conseguenza creo model e risorsa:
 
 `php artisan make:model Post`
@@ -26,8 +33,14 @@ Di conseguenza creo model e risorsa:
 Popolo i post con i seeder:
 `php artisan make:seeder PostTableSeeder`
 
------
-
-Ricorda di rendere il model Post fillable con i cambi che mi interessano.
+*Ricorda* di rendere il model Post fillable con i cambi che mi interessano.
 
 `protected $fillable = ['name', 'author', 'content'];`
+
+In seguito riempio la tabella post con i miei seeder:
+
+`php artisan db:seed --class=PostTableSeeder`
+
+-----
+
+Ricordarsi di rinominare la app admin_app, poiche relativa a tutto quello che e il backoffice.

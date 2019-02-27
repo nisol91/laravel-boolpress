@@ -19,7 +19,7 @@ class PostTableSeeder extends Seeder
 
             $newPost->title = $faker->sentence(4);
             $newPost->author = $faker->name();
-            $newPost->content = $faker->text(4);
+            $newPost->content = $faker->text();
 
             $newPost->save();
 
