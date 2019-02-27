@@ -130,6 +130,8 @@ Nella CRUD dei post, nel create devo fare la query per prendere tutte le categor
 
     `$category = Category::where('slug', $slug)->first();`
 
+
+
     cerca nel model Controller (che ho debitamente importato con use) tutti gli elementi in cui 'slug' e' uguale allo $slug che gli ho dato in ingresso nella mia funzione.
 
     Questa invece e' la query che si usa solo per l id.
