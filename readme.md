@@ -128,14 +128,41 @@ Nella CRUD dei post, nel create devo fare la query per prendere tutte le categor
 
 **query sql**
 
-    `$category = Category::where('slug', $slug)->first();`
+`$category = Category::where('slug', $slug)->first();`
 
 
 
-    cerca nel model Controller (che ho debitamente importato con use) tutti gli elementi in cui 'slug' e' uguale allo $slug che gli ho dato in ingresso nella mia funzione.
+cerca nel model Controller (che ho debitamente importato con use) tutti gli elementi in cui 'slug' e' uguale allo $slug che gli ho dato in ingresso nella mia funzione.
 
-    Questa invece e' la query che si usa solo per l id.
-   `Category::find($id)`
+Questa invece e' la query che si usa solo per l id.
+`Category::find($id)`
+
+----- 
+
+
+per passare lo **slug** lo metto nel secondo argomento della route!!
+
+
+-----
+
+
+
+-----
+
+# DA FINIRE:
+
+1 - /post/{post_slug}: La pagina che fa vedere il contenuto del post identificato da post_slug
+
+*facoltative:*
+
+2 - non riconosce le categories nell admin edit post
+
+3 - aggiusta select nel filter home categories
+
+4 - text area per html
+
+
+
 
 
 

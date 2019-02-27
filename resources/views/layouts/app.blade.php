@@ -32,7 +32,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-
+                        <a href="{{ route('admin.home') }}">Admin Home</a>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

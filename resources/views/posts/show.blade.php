@@ -1,0 +1,2 @@
+{{-- mostro il post {{  }} --}}
+show

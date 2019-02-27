@@ -4,26 +4,28 @@
         <div class="row">
             <div class="col-12">
                 <h1>Aggiungi nuovo post</h1>
-                <form class="form-group" action="{{ route('admin.posts.store') }}" method="post">
+                <form class="form-group" action="{{ route('admin.posts.update', $post->id) }}" method="post">
                     @csrf
+                    @method('PUT')
+
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" name="title" class="form-control" id="" placeholder="Enter title">
+                    <input type="text" name="title" class="form-control" id="" placeholder="Enter title" value="{{ $post->title }}">
                         <label for="author">Author</label>
-                        <input type="text" name="author" class="form-control" id="" placeholder="Enter author">
+                        <input type="text" name="author" class="form-control" id="" placeholder="Enter author" value="{{ $post->author }}">
                         <label for="content">Content</label>
-                        <textarea cols="30" rows="8" type="text" name="content" class="form-control" id="" placeholder="Enter content"></textarea>
+                        <textarea cols="20" rows="8" type="text" name="content" class="form-control" id="" placeholder="Enter content">{{ $post->content }}</textarea>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="category_id">Category</label>
                         <select  class="form-control" name="category_id">
                             @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
-                        <input class="btn btn-primary" type="submit" value="Create new post">
+                        <input class="btn btn-primary" type="submit" value="Update post">
                     </div>
                 </form>
             </div>

@@ -1,4 +1,5 @@
 <h1>Tutti i post della categoria {{ $category->title }}</h1>
+<a href="{{ route('home') }}">Torna alla home</a>
 
 @forelse ($posts as $post)
     <li>
