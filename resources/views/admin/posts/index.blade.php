@@ -5,6 +5,8 @@
             <div class="col-12">
                 <h1>Tutti i post</h1>
                 <a href={{ route('admin.posts.create') }} class="btn btn-primary">Crea nuovo post</a>
+                <a href={{ route('admin.category_list.index') }} class="btn btn-primary">CRUD categorie</a>
+
                 <table class="table">
                     <thead>
                         <tr>

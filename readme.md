@@ -213,7 +213,7 @@ In caso in cui laravel non ricarichi quello che ho fatto e dia errore nonostante
 
 2 - text area per html
 
-3 - crud categorie
+3 - crud categorie (non mi fa cancellare le categorie, nemmeno da db)
 
 
 

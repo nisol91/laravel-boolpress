@@ -32,6 +32,8 @@ Route::get('/', 'HomeController@index')->name('home');
 //questo e il gruppo ADMIN
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('/category_list', 'CategoryCrudController');
+
     Route::resource('/posts', 'PostController');
 });
 
