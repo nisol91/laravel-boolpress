@@ -1,4 +1,4 @@
-# LARAVEL-BOOLPRESS
+# LARAVEL-BOOLPRESS(guida passo passo e best practice in fondo)
 
 *Blog avanzato con laravel.*
 
@@ -89,6 +89,9 @@ Per evitare di fare la CRUD sulle categories, popolo la tabella con i soliti see
 **Ricorda sempre di importare il model dove serve.** `App\NOMEMODEL`(lo stesso vale per tutte le altre classi, ove servano).
 
 -----
+-----
+
+**RELAZIONI**
 
 Ora c e' una parte molto importante che riguarda le **relazioni**. Per collegare due tabelle tramite *foreign key*.
 
@@ -163,7 +166,22 @@ I **namespace** sono sempre col backslash: in pratica in laravel si usa backslas
 
 -----
 
-Se ho un *controller* nella stessa cartella del file **Controller.php** allora non lo devo richiamare con *use*. Se inveceil mio controller e' in una cartella diversa da **Controller.php** allora devo chiamarlo con use.
+Se ho un *controller* nella stessa cartella del file **Controller.php** allora non lo devo richiamare con *use*. Se invece il mio controller e' in una cartella diversa da **Controller.php** allora devo chiamarlo con use.
+
+-----
+
+**Deendency Injection**:
+
+`(Post $post)` equivale a `$post = new Post`
+
+-----
+
+**Comando molto utile**
+
+`composer dump-autoload`
+In caso in cui laravel non ricarichi quello che ho fatto e dia errore nonostante il codice scritto sia giusto.
+
+-----
 
 -----
 

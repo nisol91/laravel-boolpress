@@ -1,17 +1,15 @@
 @extends('layouts.app')
 @section('content')
     <h1>Tutti i post</h1>
-    {{-- <div class="form-group">
+    <div class="form-group">
         <label for="category_id">Category Filter</label>
         <select  class="form-control" name="category_id">
+            @foreach ($categories as $category)
             <option value="{{ $category->slug }}">{{ $category->title }}</option>
+            @endforeach
         </select>
-    </div> --}}
-    @foreach ($categories as $category)
-        <h1>{{$category->title}}</h1>
-         <a href="{{ route('categories.printPost', $category->slug) }}" class="btn btn-primary">Mostra post per categoria</a>
-    @endforeach
-
+        <a href="{{ route('categories.printPost', $category->slug) }}" class="btn btn-primary">Mostra post per categoria</a>
+    </div>
     <table class="table">
     <thead>
         <tr>

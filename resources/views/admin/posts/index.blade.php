@@ -39,5 +39,6 @@
                 </table>
             </div>
         </div>
+        {{ $posts->links() }}
     </div>
 @endsection
