@@ -16,14 +16,14 @@
                         <label for="content">Content</label>
                         <textarea cols="20" rows="8" type="text" name="content" class="form-control" id="" placeholder="Enter content">{{ $post->content }}</textarea>
                     </div>
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label for="category_id">Category</label>
                         <select  class="form-control" name="category_id">
                             @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                <option value="{{ $category->id }}" {{$category->id == ($post->category_id ) ? "selected" : null}}>{{ $category->title }}</option>
                             @endforeach
                         </select>
-                    </div> --}}
+                    </div>
                     <div class="form-group">
                         <input class="btn btn-primary" type="submit" value="Update post">
                     </div>

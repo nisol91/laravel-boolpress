@@ -149,16 +149,33 @@ per passare lo **slug** lo metto nel secondo argomento della route!!
 
 -----
 
+il titolo dell app e' il primo campo dell ENV, poi riavvia il server per vedere la modifica e reinstalla debugbar con composer.
+
+-----
+
+importante: utilizzo operatore ternario per selezionare automaticamente la categoria che ho in origine nel post che voglio editare.
+
+`{{ $category->id }}" {{$category->id == ($post->category_id ) ? "selected" : null}}`
+
+-----
+
+I **namespace** sono sempre col backslash: in pratica in laravel si usa backslash(namespace e controller) e dot point dove dovrei usare slash, nel terminale uso sempre solo lo slash.
+
+-----
+
+Se ho un *controller* nella stessa cartella del file **Controller.php** allora non lo devo richiamare con *use*. Se inveceil mio controller e' in una cartella diversa da **Controller.php** allora devo chiamarlo con use.
+
+-----
+
 # DA FINIRE:
 
 
 *facoltative:*
 
-1 - non riconosce le categories nell admin edit post
 
-2 - aggiusta select nel filter home categories
+1 - aggiusta select nel filter home categories
 
-3 - text area per html
+2 - text area per html
 
 
 
