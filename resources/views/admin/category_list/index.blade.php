@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Tutti i post</h1>
+                <h1>Tutti le categorie</h1>
                 <a href={{ route('admin.category_list.create') }} class="btn btn-primary">Crea nuova categoria</a>
                 <table class="table">
                     <thead>
