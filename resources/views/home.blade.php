@@ -1,14 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <h1>Tutti i post</h1>
-    <div class="form-group">
-        <label for="category_id">Category Filter</label>
-        <select  class="form-control" name="category_id">
-            @foreach ($categories as $category)
-            <option value="{{ $category->slug }}">{{ $category->title }}</option>
-            @endforeach
-        </select>
-        <a href="{{ route('categories.printPost', $category->slug) }}" class="btn btn-primary">Mostra post per categoria</a>
+    <div class="row">
+        <div class="col-6 flex">
+            <h4>Category Filter</h4>
+                @foreach ($categories as $category)
+                <a href="{{ route('categories.printPost', $category->slug) }}" class="btn btn-primary">{{ $category->title }}</a>
+                @endforeach
+        </div>
     </div>
     <table class="table">
     <thead>
@@ -25,7 +24,7 @@
             @forelse ($posts as $post)
                 <tr>
                     <th>{{$post->id}}</th>
-                    <th><a href="{{ route('posts.show', $post->id) }}">{{$post->title}}</a></th>
+                    <th><a href="{{ route('posts.show', $post->slug) }}">{{$post->title}}</a></th>
                     <th>{{$post->author}}</th>
                     <th>{{str_limit($post->content, 100, ' (...)')}}</th>
                     <th>{{$post->category->title}}</th>

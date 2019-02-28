@@ -7,7 +7,6 @@ use App\Post;
 use App\Category;
 
 
-
 class HomeController extends Controller
 {
     public function index() {
@@ -18,8 +17,12 @@ class HomeController extends Controller
 
         return view('home', compact('posts'), compact('categories'));
     }
-    public function show(Post $post)
+    public function show($slug)
     {
+        // dd($post->category->slug);
+        $post = Post::where('slug', $slug)->first();
+
+
         return view('posts.show', compact('post'));
 
     }

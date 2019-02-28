@@ -10679,3 +10679,7 @@ a:hover {
   color: black;
 }
 
+.flex {
+  display: flex;
+}
+

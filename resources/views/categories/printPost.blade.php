@@ -3,7 +3,7 @@
 
 @forelse ($posts as $post)
     <li>
-        {{ $post->title }}
+    <a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a>
     </li>
 @empty
     <h2>nessun post da visualizzare</h2>

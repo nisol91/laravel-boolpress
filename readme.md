@@ -1,4 +1,6 @@
-# LARAVEL-BOOLPRESS(guida passo passo e best practice in fondo)
+# LARAVEL-BOOLPRESS
+
+ ***Guida passo passo e best practice in fondo***
 
 *Blog avanzato con laravel.*
 
@@ -63,7 +65,23 @@ Per quanto riguarda le rotte, posso creare un group admin, con *middleware* auth
 Vado quindi a creare il mio index dei post, dentro a admin/posts.
 
 Posso aiutarmi con gli **Helper** di Laravel, metodi utili, che per esempio limitano le stringhe. [piccola nota: la versione 5.7 di laravel mi propone una classe, mentre la 5.6 un metodo, cosa molto piu comoda. Fortunatamente Laravel e' retroattivo quindi posso usarle entrambe indifferentemente]
+-----
 
+ ```public function show($slug)
+    {
+        // dd($post->category->slug);
+        $post = Post::where('slug', $slug)->first();
+
+
+        return view('posts.show', compact('post'));
+
+    }
+ 
+ ```
+
+ si puo fare con lo **slug** come sopra con quella query where, con l **id** e devo solo cambiare la *query* mettendo`$post = Post::find($id);`, oppure con la **dependence injection** e posso direttamente ritornare la view. 
+
+ L altra differenza fra slug e id sta nella *route* della view: in un caso passo `$post->slug`, nell altro passo `$post->id`.
 -----
 -----
 
@@ -121,7 +139,7 @@ In questo caso una categoria puo avere tanti post. iniziamo quindi dal modello C
     }
  ```
 
- `$post->category->title`. Category e' un vero e proprio array con title e id(sono le colonne della tabella Categories)
+ **nota**`$post->category->title`. Category e' un vero e proprio array con title e id(sono le colonne della tabella Categories)
 
 -----
 
@@ -194,6 +212,8 @@ In caso in cui laravel non ricarichi quello che ho fatto e dia errore nonostante
 1 - aggiusta select nel filter home categories
 
 2 - text area per html
+
+3 - crud categorie
 
 
 

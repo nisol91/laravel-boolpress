@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 use App\Post;
 use Faker\Generator as Faker;
 use App\Category;
+use Illuminate\Support\Str;
+
 
 
 
@@ -20,6 +22,7 @@ class PostTableSeeder extends Seeder
             $newPost = new Post;
             $randomCategory = Category::inRandomOrder()->first();
             $newPost->title = $faker->sentence(4);
+            $newPost->slug = Str::slug($newPost->title, '-');
             $newPost->category_id = $randomCategory->id;
             $newPost->author = $faker->name();
             $newPost->content = $faker->text();
