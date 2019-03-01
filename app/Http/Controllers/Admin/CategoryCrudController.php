@@ -62,9 +62,9 @@ class CategoryCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        return view('admin.category_list.show', compact('category'));
     }
 
     /**
@@ -73,10 +73,8 @@ class CategoryCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::where('id', $id)->get();
-
         return view('admin.category_list.edit', compact('category'));
     }
 
@@ -87,20 +85,11 @@ class CategoryCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Category $category)
+    public function update(Request $request, Category $category)
     {
         $data = $request->all();
-        // dd($data);
 
-        // $datiValidi = $request->validate([
-            //     'name' => 'required|min:2',
-            //     'lastname' => 'required|min:2',
-            //     'age' => 'numeric|between:10,90',
-
-            // ]);
-
-            $category->update($data);
-            // dd($category);
+        $category->update($data);
 
         return redirect()->route('admin.category_list.index');
     }

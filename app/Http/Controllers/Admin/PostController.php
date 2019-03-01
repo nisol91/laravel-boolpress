@@ -91,6 +91,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $data = $request->all();
+
         // $datiValidi = $request->validate([
         //     'name' => 'required|min:2',
         //     'lastname' => 'required|min:2',
