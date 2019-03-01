@@ -65,6 +65,8 @@ Per quanto riguarda le rotte, posso creare un group admin, con *middleware* auth
 Vado quindi a creare il mio index dei post, dentro a admin/posts.
 
 Posso aiutarmi con gli **Helper** di Laravel, metodi utili, che per esempio limitano le stringhe. [piccola nota: la versione 5.7 di laravel mi propone una classe, mentre la 5.6 un metodo, cosa molto piu comoda. Fortunatamente Laravel e' retroattivo quindi posso usarle entrambe indifferentemente]
+
+
 -----
 
  ```public function show($slug)
