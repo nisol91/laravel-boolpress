@@ -84,6 +84,8 @@ Posso aiutarmi con gli **Helper** di Laravel, metodi utili, che per esempio limi
  si puo fare con lo **slug** come sopra con quella query where, con l **id** e devo solo cambiare la *query* mettendo`$post = Post::find($id);`, oppure con la **dependence injection** e posso direttamente ritornare la view. 
 
  L altra differenza fra slug e id sta nella *route* della view: in un caso passo `$post->slug`, nell altro passo `$post->id`.
+
+
 -----
 -----
 
@@ -201,6 +203,18 @@ Se ho un *controller* nella stessa cartella del file **Controller.php** allora n
 `composer dump-autoload`
 In caso in cui laravel non ricarichi quello che ho fatto e dia errore nonostante il codice scritto sia giusto.
 
+
+-----
+
+**Delete** di categories che sono relazionate ad altre tabelle non e' possibile. Dovrei cancellare tutti i post in cui sono presenti quelle categorie. Posso comunque modificare quelle categorie.
+
+------
+
+
+Nota sulla **dependency injection**:
+
+essa funziona SOLO se la classe della mia dependency injection e' *identica* al nome del controller: per esempio classe `Post` nel controller `PostController`.
+
 -----
 
 -----
@@ -215,9 +229,6 @@ In caso in cui laravel non ricarichi quello che ho fatto e dia errore nonostante
 
 2 - text area per html
 
-3 - delete categorie (non mi fa cancellare le categorie, nemmeno da db)
-
-4 - update categorie, non va(ma su db va)
 
 
 

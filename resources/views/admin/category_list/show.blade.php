@@ -1,1 +1,1 @@
-questa e' la categoria {{ dd($category->title) }}
+questa e' la categoria {{ $category->title }}

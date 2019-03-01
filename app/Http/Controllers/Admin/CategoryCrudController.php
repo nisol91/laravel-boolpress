@@ -62,8 +62,9 @@ class CategoryCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
+        $category = Category::find($id);
         return view('admin.category_list.show', compact('category'));
     }
 
@@ -73,8 +74,10 @@ class CategoryCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
+        $category = Category::find($id);
+
         return view('admin.category_list.edit', compact('category'));
     }
 
@@ -85,9 +88,10 @@ class CategoryCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
+        $category = Category::find($id);
 
         $category->update($data);
 
