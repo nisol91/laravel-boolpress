@@ -5,6 +5,7 @@
         <div class="col-6 flex">
             <h4>Category Filter</h4>
                 @foreach ($categories as $category)
+                {{-- {{dd($category)}} --}}
                 <a href="{{ route('categories.printPost', $category->slug) }}" class="btn btn-primary">{{ $category->title }}</a>
                 @endforeach
         </div>

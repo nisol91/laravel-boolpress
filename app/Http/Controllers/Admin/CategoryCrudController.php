@@ -93,6 +93,7 @@ class CategoryCrudController extends Controller
         $data = $request->all();
         $category = Category::find($id);
 
+
         $category->update($data);
 
         return redirect()->route('admin.category_list.index');
