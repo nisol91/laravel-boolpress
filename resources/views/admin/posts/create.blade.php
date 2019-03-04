@@ -9,6 +9,8 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control" id="" placeholder="Enter title">
+                        <label for="slug">Slug</label>
+                        <input type="text" name="slug" class="form-control" id="" placeholder="Enter slug">
                         <label for="author">Author</label>
                         <input type="text" name="author" class="form-control" id="" placeholder="Enter author">
                         <label for="content">Content</label>
@@ -19,6 +21,14 @@
                         <select  class="form-control" name="category_id">
                             @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tags">Tag</label>
+                        <select class="js-example-basic-multiple" name="tags[]" multiple="multiple" style="width: 100%">
+                            @foreach ($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->title }}</option>
                             @endforeach
                         </select>
                     </div>

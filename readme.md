@@ -113,7 +113,7 @@ Per evitare di fare la CRUD sulle categories, popolo la tabella con i soliti see
 -----
 -----
 
-**RELAZIONI**
+**RELAZIONI one to many**
 
 Ora c e' una parte molto importante che riguarda le **relazioni**. Per collegare due tabelle tramite *foreign key*.
 
@@ -133,7 +133,7 @@ A questo punto posso agiungere ai seeder e al fillable del post anche *category_
 Faccio girare i seeder e rigenero la tabella dei post: `php artisan db:seed --class=PostTableSeeder`
 
 
-A questo punto devo agire sui **model** delle due tabelle Category e Post per dire a laravel le effettive relazioni. Inizio chiedendomi: 'chi e che ha tanti fra i due?'
+A questo punto devo agire sui **model** delle due tabelle Category e Post per dire a laravel le effettive relazioni. Questa operazione si chiama *mappatura*. Inizio chiedendomi: 'chi e che ha tanti fra i due?'
 In questo caso una categoria puo avere tanti post. iniziamo quindi dal modello Category.
 
  ```language
@@ -215,6 +215,33 @@ Nota sulla **dependency injection**:
 
 essa funziona SOLO se la classe della mia dependency injection e' *identica* al nome del controller: per esempio classe `Post` nel controller `PostController`.
 
+
+------
+
+
+**relazioni many to many**
+
+oltre alla mappatura da scrivere nei model, al posto di fare l update della tabella principale(in questo caso posts), bisogna creare una nuova migration(una nuova tabella ponte). si chiamera in questo caso
+`create_post_tag_table`. Qui scrivero il codica che riguarda le foreign keys:
+ ```language
+ Schema::create('post_tag', function (Blueprint $table) {
+            $table->unsignedInteger('post_id');
+            $table->unsignedInteger('tag_id');
+
+            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('tag_id')->references('id')->on('tags');
+
+            $table->primary(['post_id', 'tag_id']);
+        });
+ ```
+eseguendo  `php artisan migrate` avra creato la nuova tabella ponte posts_tag nel DB.
+
+La mappatura fatta nei model invece e' molto semplice. Uso sempre il metodo
+`belongsToMany()`.
+
+Infine, quando vado a salvare un nuovo post, se ho una many to many, devo utilizzare il metodo sync: `$post->tags()->sync($data['tags']);`
+
+**sync** sincronizza tutto, anche i tags vecchi, e' un po come fresh. se no uso attach o detach..per aggiungere o togliere una singola relazione.
 -----
 
 -----
