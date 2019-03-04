@@ -242,6 +242,8 @@ La mappatura fatta nei model invece e' molto semplice. Uso sempre il metodo
 Infine, quando vado a salvare un nuovo post, se ho una many to many, devo utilizzare il metodo sync: `$post->tags()->sync($data['tags']);`
 
 **sync** sincronizza tutto, anche i tags vecchi, e' un po come fresh. se no uso attach o detach..per aggiungere o togliere una singola relazione.
+
+
 -----
 
 -----
