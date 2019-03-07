@@ -255,6 +255,8 @@ infine ricorda che il $request->all(), non e' altro che cio che viene passato da
 
 per l id si usa `::find`, per altro tipo lo slug si usa `::where`, ma di fatto funzionano allo stesso modo.
 
+form e link sono due cose diverse. di solito e' il link che passa anche un id o uno slug, per esempio per mostrare un singolo post.
+
 
 -----
 
@@ -280,19 +282,24 @@ da mettere nel model. mi modificano i valori degli elementi di una colonna del d
   ```
 
 
------
+-------
+
+
+**chiamata ajax e middleware**
+
+nello script faccio una chiamata a una pagina (ajax/posts) che ha un controller che mi restituisce un json con tutti i post che chiama.
+
+Io voglio che il middleware impedisca che i miei contenuti (in questo caso i post) vengano visualizzati se non sono chiamati dalla chiamata ajax(che parte al document ready). In pratica voglio solo che vengano visualizzati come chiamata ajax, e non come response del controller `indexAjax`.
+
+Alla fine il middleware fa dei check.
+
+Quindi creo middleware, lo aggiungo al kernel nei route middleware, e lo applico alla mia get nelle routes web. nel middleware posso dirgli che se la chiamata non e' ajax, mi faccia 404.
 
 -----
 
-# DA FINIRE:
+-----
 
 
-*facoltative:*
-
-
-1 - aggiusta select nel filter home categories
-
-2 - text area per html
 
 
 

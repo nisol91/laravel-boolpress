@@ -3,7 +3,6 @@
     <h1>Tutti i post</h1>
     <div class="row">
         <div class="col-6 flex">
-            <a href="{{ route('posts.ajaxShow')}}" class='btn'>Index Ajax</a>
             <form class='form-group' method="get" action="{{ route('categories.printPost') }}">
                 {{-- @csrf --}}
                 <div class="form-group">

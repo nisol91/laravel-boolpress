@@ -15,6 +15,9 @@
 
 Auth::routes();
 
+Route::get('/ajax/posts', 'HomeController@indexAjax')->middleware('checkAjax')->name('posts.ajaxShow');
+
+
 
 Route::get('/categories', 'CategoryController@printCategories')->name('categories.printPost');
 

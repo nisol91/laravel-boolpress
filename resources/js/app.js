@@ -1,4 +1,5 @@
 
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -39,4 +40,19 @@ require('select2')
 
 $(document).ready(function() {
     $('.js-example-basic-multiple').select2();
+
+    $.ajax({
+        url: "http://127.0.0.1:8000/ajax/posts",
+        method: 'GET',
+        success: function (data) {
+            console.log(data);
+
+        },
+        error: function() {
+            console.log('errore');
+
+        }
+    });
+
+
 });

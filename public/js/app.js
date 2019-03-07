@@ -54842,6 +54842,16 @@ __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
 
 $(document).ready(function () {
   $('.js-example-basic-multiple').select2();
+  $.ajax({
+    url: "http://127.0.0.1:8000/ajax/posts",
+    method: 'GET',
+    success: function success(data) {
+      console.log(data);
+    },
+    error: function error() {
+      console.log('errore');
+    }
+  });
 });
 
 /***/ }),
