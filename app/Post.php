@@ -26,6 +26,6 @@ class Post extends Model
 
     public function setTitleAttribute($value)
     {
-        return strtolower($value);
+        $this->attributes['title'] = strtolower($value);
     }
 }

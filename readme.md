@@ -69,7 +69,8 @@ Posso aiutarmi con gli **Helper** di Laravel, metodi utili, che per esempio limi
 
 -----
 
- ```public function show($slug)
+ ```php
+ public function show($slug)
     {
         // dd($post->category->slug);
         $post = Post::where('slug', $slug)->first();
@@ -223,7 +224,7 @@ essa funziona SOLO se la classe della mia dependency injection e' *identica* al 
 
 oltre alla mappatura da scrivere nei model, al posto di fare l update della tabella principale(in questo caso posts), bisogna creare una nuova migration(una nuova tabella ponte). si chiamera in questo caso
 `create_post_tag_table`. Qui scrivero il codica che riguarda le foreign keys:
- ```language
+ ```php
  Schema::create('post_tag', function (Blueprint $table) {
             $table->unsignedInteger('post_id');
             $table->unsignedInteger('tag_id');
@@ -274,7 +275,7 @@ da mettere nel model. mi modificano i valori degli elementi di una colonna del d
   ```php
   public function setTitleAttribute($value)
     {
-        return strtolower($value);
+        $this->attributes['title'] = strtolower($value);
     }
   ```
 
