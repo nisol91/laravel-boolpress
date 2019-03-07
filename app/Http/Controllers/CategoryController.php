@@ -4,27 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Post;
+
 
 
 
 class CategoryController extends Controller
 {
-    public function printCategories ($slug) {
+    public function printCategories (Request $request) {
 
-        $category = Category::where('slug', $slug)->first();
 
+        $data = $request->all();
+
+        if (empty($data['category_id'])) {
+            abort(404);
+        }
+
+        $category = Category::find($data['category_id']);
 
         if (empty($category)) {
             abort(404);
         }
 
-        $data = [
-            'category' => $category,
-            'posts' => $category->posts
-        ];
-        //tutti i post associati a quella categoria
+        $posts = Post::where('category_id', $category->id)->orderBy('id', 'desc')->limit(5)->get();
 
-        return view('categories.printPost', $data);
+        //analogamente potevo usare questo, visto che
+        //a ogni categoria sono associati tanti post (e non solo a ogni post e' associata una sola categoria)
+        // $posts = $category->posts;
+
+        return view('categories.printPost', compact('posts'), compact('category'));
     }
 
 
@@ -47,4 +55,5 @@ class CategoryController extends Controller
 
     //     return view('categories.printPost', $data);
     // }
+
 }

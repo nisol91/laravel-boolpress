@@ -16,4 +16,16 @@ class Post extends Model
     {
         return $this->belongsToMany('App\Tag');
     }
+
+
+
+    public function getTitleAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    public function setTitleAttribute($value)
+    {
+        return strtolower($value);
+    }
 }

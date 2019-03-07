@@ -3,10 +3,22 @@
     <h1>Tutti i post</h1>
     <div class="row">
         <div class="col-6 flex">
-            <h4>Category Filter</h4>
+            <form class='form-group' method="get" action="{{ route('categories.printPost') }}">
+                {{-- @csrf --}}
+                <div class="form-group">
+                    <label for="category_id">Category Filter</label>
+                    <select class="form-control" name="category_id">
+                        @foreach ($categories as $category)
+                          <option value='{{ $category->id }}'>{{ $category->title }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Filter categories">
+            </div>
+            </form>
                 @foreach ($categories as $category)
-                {{-- {{dd($category)}} --}}
-                <a href="{{ route('categories.printPost', $category->slug) }}" class="btn btn-primary">{{ $category->title }}</a>
+                {{-- <a href="{{ route('categories.printPost', $category->slug) }}" class="btn btn-primary">{{ $category->title }}</a> --}}
                 @endforeach
         </div>
     </div>

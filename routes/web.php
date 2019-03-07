@@ -16,7 +16,8 @@
 Auth::routes();
 
 
-Route::get('/categories/{slug}', 'CategoryController@printCategories')->name('categories.printPost');
+Route::get('/categories', 'CategoryController@printCategories')->name('categories.printPost');
+
 
 Route::get('/show/{slug}', 'HomeController@show')->name('posts.show');
 

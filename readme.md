@@ -243,6 +243,41 @@ Infine, quando vado a salvare un nuovo post, se ho una many to many, devo utiliz
 
 **sync** sincronizza tutto, anche i tags vecchi, e' un po come fresh. se no uso attach o detach..per aggiungere o togliere una singola relazione.
 
+-----
+
+
+**nota importante sui form**
+
+quello che il form passa tramite `for` e `name`, va direttamente nella query del mio url e se faccio una request dal controller, me lo passa automaticamente, inoltre la mia `action` del form non deve passare nulla oltre al name!!!
+
+infine ricorda che il $request->all(), non e' altro che cio che viene passato dal form.
+
+per l id si usa `::find`, per altro tipo lo slug si usa `::where`, ma di fatto funzionano allo stesso modo.
+
+
+-----
+
+
+
+**mutators**
+da mettere nel model. mi modificano i valori degli elementi di una colonna del db. per esempio in questo caso rendo tutti i titoli dei post in maiuscolo, ogni volta che compaiono.
+
+ ```php
+ public function getTitleAttribute($value)
+    {
+        return strtoupper($value);
+    }
+ ```
+
+ allo stesso modo ci sono i set, per salvare tutto in minuscolo:
+
+  ```php
+  public function setTitleAttribute($value)
+    {
+        return strtolower($value);
+    }
+  ```
+
 
 -----
 
