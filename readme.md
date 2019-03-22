@@ -143,6 +143,9 @@ In questo caso una categoria puo avere tanti post. iniziamo quindi dal modello C
         return $this->relazione('App\altromodello');
     }
  ```
+ 
+**importante**
+Se succedono errori, cancella i dati (tutte le row) delle due tabelle in questione, poi comando set global `foreign_key_checks=0` su terminale. Quando hai fatto, fai comando set global `foreign_key_checks=1` sempre su terminale.
 
  **nota**`$post->category->title`. Category e' un vero e proprio array con title e id(sono le colonne della tabella Categories)
 
@@ -245,8 +248,7 @@ Infine, quando vado a salvare un nuovo post, se ho una many to many, devo utiliz
 **sync** sincronizza tutto, anche i tags vecchi, e' un po come fresh. se no uso attach o detach..per aggiungere o togliere una singola relazione.
 
 
-**importante**
-Se succedono errori, cancella i dati (tutte le row) delle due tabelle in questione, poi comando set global `foreign_key_checks=0` su terminale. Quando hai fatto, fai comando set global `foreign_key_checks=1` sempre su terminale.
+
 
 
 
